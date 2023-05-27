@@ -2,19 +2,22 @@
   <div id="app">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <!-- <LoginPage/> -->
-    <HomePage/>
+    <!-- <HomePage/> -->
+    <SingleNewsPage/>
   </div>
 </template>
 
 <script>
 // import LoginPage from './components/LoginPage.vue'
-import HomePage from './components/HomePage.vue'
+// import HomePage from './components/HomePage.vue'
+  import SingleNewsPage from './components/SingleNewsPage.vue'
 
 export default {
   name: 'App',
   components: {
     // LoginPage,
-    HomePage
+    // HomePage
+    SingleNewsPage
   }
 }
 </script>

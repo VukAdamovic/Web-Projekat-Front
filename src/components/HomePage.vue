@@ -125,11 +125,6 @@ export default {
         background-color: rgba(255, 255, 255, 0.18); /* Boja thumb-a */
     }
 
-    .custom-tag-active{
-    color: #f7f7f7 !important;
-    font-weight: 700;
-    }
-
     /* Stilizacija paginacije */
     .pagination.glass-pagination .page-link {
         background-color: transparent;
