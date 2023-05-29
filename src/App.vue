@@ -2,8 +2,8 @@
   <div id="app">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <!-- <LoginPage/> -->
-    <HomePage/>
-    <!-- <SingleNewsPage/> -->
+    <!-- <HomePage/> -->
+    <SingleNewsPage/>
     <!-- <NewsPage/> -->
     <!-- <CreateNewsPage/> -->
     <!-- <CategoriesPage/> -->
@@ -13,19 +13,19 @@
 
 <script>
 // import LoginPage from './components/LoginPage.vue'
-import HomePage from './components/HomePage.vue'
-// import SingleNewsPage from './components/SingleNewsPage.vue'
-// import NewsPage from './components/NewsPage.vue'
-// import CreateNewsPage from './components/CreateNewsPage.vue'
-// import CategoriesPage from './components/CategoriesPage.vue';
-// import CreateCategoryPage from './components/CreateCategoryPage.vue';
+// import HomePage from './components/HomePage.vue'
+import SingleNewsPage from './components/news/SingleNewsPage.vue'
+// import NewsPage from './components/news/NewsPage.vue'
+// import CreateNewsPage from './components/news/CreateNewsPage.vue'
+// import CategoriesPage from './components/category/CategoriesPage.vue';
+// import CreateCategoryPage from './components/category/CreateCategoryPage.vue';
 
 export default {
   name: 'App',
   components: {
     // LoginPage,
-    HomePage
-    // SingleNewsPage
+    // HomePage
+    SingleNewsPage
     // NewsPage
     // CreateNewsPage
     // CategoriesPage

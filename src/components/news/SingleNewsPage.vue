@@ -9,7 +9,7 @@
     
                 <a class="navbar-brand ps-5  text-navbar">
     
-                    <img src="../assets/logo-raf.png" alt="Logo" width="60" height="60" class="d-inline-block">
+                    <img src="../../assets/logo-raf.png" alt="Logo" width="60" height="60" class="d-inline-block">
     
                         RAF News
     

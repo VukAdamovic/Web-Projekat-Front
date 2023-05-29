@@ -1,6 +1,6 @@
 <template>
-    <div id="newsPage" style="height: 100vh;">
-
+    <div id="createNewsPage" style="height: 100vh;">
+    
         <nav class="navbar navbar-expand-lg navbar-light border-navbar m-0">
 
             <div class="container-fluid justify-content-center">
@@ -9,7 +9,7 @@
 
                 <a class="navbar-brand ps-5  text-navbar">
 
-                    <img src="../assets/logo-raf.png" alt="Logo" width="60" height="60" class="d-inline-block">
+                    <img src="../../assets/logo-raf.png" alt="Logo" width="60" height="60" class="d-inline-block">
 
                         RAF News
 
@@ -73,71 +73,53 @@
 
         </nav>
 
+        <div class="container mt-2">
 
+            <div class="container-fluid p-5 row justify-content-center">
 
-        <div class="container mt-5">
+            <form class="col glass card-form custom-bar text-center">
+                <h4>New News</h4>
 
-            <div class="container-fluid glass custom-bar pt-2 ps-5 pe-5 pb-2 text-color">
+                <div class="mb-3 mt-3">
+                    <label for="articleName" class="form-label text-center">News Title</label>
+                    <input type="text" class="form-control" id="articleName" placeholder="Jokic the best center ever?">
+                </div>
 
+                <div class="mb-3">
+                    <label for="description" class="form-label">Content</label>
+                    <textarea class="form-control custom-height-textarea" id="description" placeholder="Recent years, the emergence of Nikola Jokic has sparked debates among basketball enthusiasts worldwide. Known for his unique playing style and exceptional skills, Jokic has garnered attention and raised the question: Is he the best center ever?"></textarea>
+                </div>
 
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category</label>
+                    <select class="form-select" id="category">
+                        <option selected disabled>Select category</option>
+                        <option value="food">Food</option>
+                        <option value="travel">Travel</option>
+                        <option value="technology">Technology</option>
+                        <!-- Dodajte preostale opcije kategorija -->
+                    </select>
+                </div>
 
-                <nav class="nav justify-content-end">
-
-                    <a class="nav-link" aria-current="page" href="#">Create News</a>
-
-                </nav>
-
-
-                <div class="row justify-content-center gap-5 mt-2">  <!-- Unutar ovog row-a se dodaju cardovi -->
-
-                    <div class="card bg-transparent col-4 custom-border text-center">
-
-                        <div class="card-body">
-
-                            <h5 class="card-title">Naslov Vesti</h5>
-
-                            <p class="card-text mt-3">Ime Autora</p>
-
-                            <p class="card-text mt-3 mb-4">Datum Kreiranja</p>
-
-                            <a href="#" class="card-link ">Update</a>
-
-                            <a href="#" class="card-link">Delete</a>
-
-                        </div>
-
-                    </div>
-    
+                <div class="mb-5">
+                    <label for="tags" class="form-label">Tags</label>
+                    <select multiple class="form-control" id="tags">
+                        <option value="1">#food</option>
+                        <option value="2">#travel</option>
+                        <option value="3">#technology</option>
+                        <!-- Dodajte preostale opcije tagova -->
+                    </select>
                 </div>
 
 
-                <nav class="mt-5" aria-label="Page navigation example">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="#rich life">
+                    <button class="btn btn-outline-success" type="button">Create Tag</button>
+                </div>
 
-                    <ul class="pagination justify-content-center glass-pagination">
 
-                        <li class="page-item">
-
-                            <a class="page-link" href="#" aria-label="Previous">
-
-                                <span aria-hidden="true">&laquo;</span>
-
-                            </a>
-
-                        </li>
-
-                        <li class="page-item">
-
-                            <a class="page-link" href="#" aria-label="Next">
-
-                                <span aria-hidden="true">&raquo;</span>
-
-                            </a>
-
-                        </li>
-
-                    </ul>
-
-                </nav>
+                <button type="submit" class="btn btn-primary mt-4">Create</button>
+            </form>
 
             </div>
 
@@ -148,7 +130,7 @@
 
 <script>
 export default {
-    name: "NewsPage"
+  name: "CreateNewsPage"
 }
 </script>
 
@@ -172,14 +154,6 @@ export default {
     color: #f7f7f7;
 }
 
-.custom-border {
-    border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
-}
-
-.card-max-width {
-    max-width: 500px;
-}
-
 .glass {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
     backdrop-filter: blur(10px);
@@ -187,6 +161,15 @@ export default {
     border-radius: 5px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.card-form {
+    padding-top: 55px;
+    padding-bottom: 55px;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: #D6D6D6;
+    max-width: 500px;
 }
 
 .border-navbar {
@@ -197,6 +180,10 @@ export default {
     max-height: calc(100vh - 200px);
     /* Podesite visinu prema potrebi */
     overflow-y: auto;
+}
+
+.custom-height-textarea {
+    min-height: 150px;
 }
 
 /* Stilizacija scroll bara */
@@ -220,6 +207,21 @@ export default {
     /* Boja thumb-a */
 }
 
+/* Stilizacija forma komentara */
+
+.card-form {
+    padding-top: 55px;
+    padding-bottom: 55px;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: #D6D6D6;
+    max-width: 500px;
+}
+
+.custom-height-textarea {
+    min-height: 150px;
+}
+
 /* Stilizacija paginacije */
 
 .pagination.glass-pagination .page-link {
@@ -238,5 +240,9 @@ export default {
     background-color: #f7f7f7;
     color: #000;
     border-radius: 5px;
+}
+
+.custom-border {
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
 }
 </style>

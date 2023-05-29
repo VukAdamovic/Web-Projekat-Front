@@ -1,5 +1,5 @@
 <template>
-    <div id="categoriesPage" style="height: 100vh;">
+    <div id="createCategoryPage" style="height: 100vh;">
     
         <nav class="navbar navbar-expand-lg navbar-light border-navbar m-0">
     
@@ -9,7 +9,7 @@
     
                 <a class="navbar-brand ps-5  text-navbar">
     
-                    <img src="../assets/logo-raf.png" alt="Logo" width="60" height="60" class="d-inline-block">
+                    <img src="../../assets/logo-raf.png" alt="Logo" width="60" height="60" class="d-inline-block">
     
                         RAF News
     
@@ -75,73 +75,33 @@
     
     
     
-        <div class="container mt-5">
+        <div class="container mt-2">
     
-            <div class="container-fluid glass custom-bar pt-2 ps-5 pe-5 pb-2 text-color">
+            <div class="container-fluid p-5 row justify-content-center">
     
+                <form class="p-5 col glass card-form text-center">
     
+                    <h4>New Category</h4>
     
-                <nav class="nav justify-content-end">
+                    <div class="mb-3 mt-3">
     
-                    <a class="nav-link" aria-current="page" href="#">Create Category</a>
+                        <label for="exampleInputEmail1" class="form-label text-center">Category Name</label>
     
-                </nav>
-    
-    
-    
-                <div class="row justify-content-center gap-5 mt-2">
-    
-                    <div class="card bg-transparent col-5 custom-border text-center">
-    
-                        <div class="card-body">
-    
-                            <h5 class="card-title">Naslov Kategorije</h5>
-    
-                            <p class="card-text mt-3">Kratak opis kategorije</p>
-    
-                            <a href="#" class="card-link ">Update</a>
-    
-                            <a href="#" class="card-link">Delete</a>
-    
-                        </div>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Sport">
     
                     </div>
     
+                    <div class="mb-3">
     
+                        <label for="exampleInputPassword1" class="form-label">Description</label>
     
-                </div>
+                        <textarea class="form-control custom-height-textarea" id="exampleInputPassword1" placeholder="Stay updated with the latest sports news. Be in the know about thrilling match moments and exclusive athlete interviews. Stay connected to the world of sports."></textarea>
     
+                    </div>
     
+                    <button type="submit" class="btn btn-primary mt-4">Create</button>
     
-                <nav class="mt-5" aria-label="Page navigation example">
-    
-                    <ul class="pagination justify-content-center glass-pagination">
-    
-                        <li class="page-item">
-    
-                            <a class="page-link" href="#" aria-label="Previous">
-    
-                                <span aria-hidden="true">&laquo;</span>
-    
-                            </a>
-    
-                        </li>
-    
-                        <li class="page-item">
-    
-                            <a class="page-link" href="#" aria-label="Next">
-    
-                                <span aria-hidden="true">&raquo;</span>
-    
-                            </a>
-    
-                        </li>
-    
-                    </ul>
-    
-                </nav>
-    
-    
+                </form>
     
             </div>
     
@@ -150,9 +110,10 @@
     </div>
 </template>
 
+
 <script>
 export default {
-    name: "CategoriesPage"
+    name: "CreateCategoryPage"
 }
 </script>
 
@@ -176,14 +137,6 @@ export default {
     color: #f7f7f7;
 }
 
-.custom-border {
-    border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
-}
-
-.card-max-width {
-    max-width: 500px;
-}
-
 .glass {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
     backdrop-filter: blur(10px);
@@ -191,6 +144,15 @@ export default {
     border-radius: 5px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.card-form {
+    padding-top: 55px;
+    padding-bottom: 55px;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: #D6D6D6;
+    max-width: 500px;
 }
 
 .border-navbar {
@@ -224,6 +186,21 @@ export default {
     /* Boja thumb-a */
 }
 
+/* Stilizacija forma komentara */
+
+.card-form {
+    padding-top: 55px;
+    padding-bottom: 55px;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: #D6D6D6;
+    max-width: 500px;
+}
+
+.custom-height-textarea {
+    min-height: 150px;
+}
+
 /* Stilizacija paginacije */
 
 .pagination.glass-pagination .page-link {
@@ -242,5 +219,9 @@ export default {
     background-color: #f7f7f7;
     color: #000;
     border-radius: 5px;
+}
+
+.custom-border {
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
 }
 </style>
