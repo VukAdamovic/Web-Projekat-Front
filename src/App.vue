@@ -4,6 +4,8 @@
     <!-- <LoginPage/> -->
     <HomePage/>
     <!-- <SingleNewsPage/> -->
+    <!-- <NewsPage/> -->
+    <!-- <CreateNewsPage/> -->
     <!-- <CategoriesPage/> -->
     <!-- <CreateCategoryPage/> -->
   </div>
@@ -13,6 +15,8 @@
 // import LoginPage from './components/LoginPage.vue'
 import HomePage from './components/HomePage.vue'
 // import SingleNewsPage from './components/SingleNewsPage.vue'
+// import NewsPage from './components/NewsPage.vue'
+// import CreateNewsPage from './components/CreateNewsPage.vue'
 // import CategoriesPage from './components/CategoriesPage.vue';
 // import CreateCategoryPage from './components/CreateCategoryPage.vue';
 
@@ -22,6 +26,8 @@ export default {
     // LoginPage,
     HomePage
     // SingleNewsPage
+    // NewsPage
+    // CreateNewsPage
     // CategoriesPage
     // CreateCategoryPage
 }

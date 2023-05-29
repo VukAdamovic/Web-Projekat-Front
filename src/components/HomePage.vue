@@ -36,10 +36,7 @@
         </nav>  
 
         <div class="container mt-5">
-            <div class="container-fluid glass custom-bar pt-2 ps-5 pe-5 pb-2">
-                <nav class="nav justify-content-end">
-                    <a class="nav-link" aria-current="page" href="#">Create News</a>
-                </nav>
+            <div class="container-fluid glass custom-bar pt-3 ps-5 pe-5 pb-2">
 
                 <div class="row justify-content-center gap-5 mt-4">   <!-- Unutar ovog row-a se dodaju cardovi -->
                     <div class="card col-2">
