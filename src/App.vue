@@ -2,28 +2,28 @@
   <div id="app">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <!-- <LoginPage/> -->
-    <!-- <HomePage/> -->
+    <HomePage/>
     <!-- <SingleNewsPage/> -->
     <!-- <CategoriesPage/> -->
-    <CreateCategoryPage/>
+    <!-- <CreateCategoryPage/> -->
   </div>
 </template>
 
 <script>
 // import LoginPage from './components/LoginPage.vue'
-// import HomePage from './components/HomePage.vue'
+import HomePage from './components/HomePage.vue'
 // import SingleNewsPage from './components/SingleNewsPage.vue'
 // import CategoriesPage from './components/CategoriesPage.vue';
-import CreateCategoryPage from './components/CreateCategoryPage.vue';
+// import CreateCategoryPage from './components/CreateCategoryPage.vue';
 
 export default {
   name: 'App',
   components: {
     // LoginPage,
-    // HomePage
+    HomePage
     // SingleNewsPage
     // CategoriesPage
-    CreateCategoryPage
+    // CreateCategoryPage
 }
 }
 </script>
