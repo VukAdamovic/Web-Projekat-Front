@@ -1,125 +1,131 @@
 <template>
-  <div id="createNewsPage" style="height: 100vh;">
+    <div id="createNewsPage" style="height: 100vh;">
     
-    <nav class="navbar navbar-expand-lg navbar-light border-navbar m-0">
+        <nav class="navbar navbar-expand-lg navbar-light border-navbar m-0">
 
-        <div class="container-fluid justify-content-center">
-
-
-
-            <a class="navbar-brand ps-5  text-navbar">
-
-                <img src="../assets/logo-raf.png" alt="Logo" width="60" height="60" class="d-inline-block">
-
-                    RAF News
-
-            </a>
+            <div class="container-fluid justify-content-center">
 
 
 
-            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand ps-5  text-navbar">
 
-                <span class="navbar-toggler-icon"></span>
+                    <img src="../assets/logo-raf.png" alt="Logo" width="60" height="60" class="d-inline-block">
 
-            </button>
+                        RAF News
+
+                </a>
 
 
 
-            <div class="collapse navbar-collapse justify-content-end  padding-left-right-125px" id="navbarNav">
+                <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 
-                <ul class="navbar-nav">
+                    <span class="navbar-toggler-icon"></span>
 
-                    <li class="nav-item text-center m-3">
+                </button>
 
-                        <a class="nav-link  text-navbar" href="#">Home</a>
 
-                    </li>
 
-                    <li class="nav-item text-center m-3">
+                <div class="collapse navbar-collapse justify-content-end  padding-left-right-125px" id="navbarNav">
 
-                        <a class="nav-link text-navbar" href="#">Top Stories</a>
+                    <ul class="navbar-nav">
 
-                    </li>
+                        <li class="nav-item text-center m-3">
 
-                    <li class="nav-item text-center m-3">
+                            <a class="nav-link  text-navbar" href="#">Home</a>
 
-                        <a class="nav-link text-navbar" href="#">Categories</a>
+                        </li>
 
-                    </li>
+                        <li class="nav-item text-center m-3">
 
-                    <li class="nav-item text-center m-3">
+                            <a class="nav-link text-navbar" href="#">Top Stories</a>
 
-                        <a class="nav-link text-navbar" href="#">Users</a>
+                        </li>
 
-                    </li>
+                        <li class="nav-item text-center m-3">
 
-                    <li class="nav-item text-center m-3">
+                            <a class="nav-link text-navbar" href="#">Categories</a>
 
-                        <a class="nav-link text-navbar" href="#">Log out</a>
+                        </li>
 
-                    </li>
+                        <li class="nav-item text-center m-3">
 
-                </ul>
+                            <a class="nav-link text-navbar" href="#">News</a>
+
+                        </li>
+
+                        <li class="nav-item text-center m-3">
+
+                            <a class="nav-link text-navbar" href="#">Users</a>
+
+                        </li>
+
+                        <li class="nav-item text-center m-3">
+
+                            <a class="nav-link text-navbar" href="#">Log out</a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
 
             </div>
 
-        </div>
+        </nav>
 
-    </nav>
+        <div class="container mt-2">
 
-    <div class="container mt-2">
+            <div class="container-fluid p-5 row justify-content-center">
 
-        <div class="container-fluid p-5 row justify-content-center">
+            <form class="col glass card-form custom-bar text-center">
+                <h4>New News</h4>
 
-          <form class="col glass card-form custom-bar text-center">
-            <h4>New News</h4>
+                <div class="mb-3 mt-3">
+                    <label for="articleName" class="form-label text-center">News Title</label>
+                    <input type="text" class="form-control" id="articleName" placeholder="Jokic the best center ever?">
+                </div>
 
-            <div class="mb-3 mt-3">
-                <label for="articleName" class="form-label text-center">News Title</label>
-                <input type="text" class="form-control" id="articleName" placeholder="Jokic the best center ever?">
+                <div class="mb-3">
+                    <label for="description" class="form-label">Content</label>
+                    <textarea class="form-control custom-height-textarea" id="description" placeholder="Recent years, the emergence of Nikola Jokic has sparked debates among basketball enthusiasts worldwide. Known for his unique playing style and exceptional skills, Jokic has garnered attention and raised the question: Is he the best center ever?"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category</label>
+                    <select class="form-select" id="category">
+                        <option selected disabled>Select category</option>
+                        <option value="food">Food</option>
+                        <option value="travel">Travel</option>
+                        <option value="technology">Technology</option>
+                        <!-- Dodajte preostale opcije kategorija -->
+                    </select>
+                </div>
+
+                <div class="mb-5">
+                    <label for="tags" class="form-label">Tags</label>
+                    <select multiple class="form-control" id="tags">
+                        <option value="1">#food</option>
+                        <option value="2">#travel</option>
+                        <option value="3">#technology</option>
+                        <!-- Dodajte preostale opcije tagova -->
+                    </select>
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="#rich life">
+                    <button class="btn btn-outline-success" type="button">Create Tag</button>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary mt-4">Create</button>
+            </form>
+
             </div>
-
-            <div class="mb-3">
-                <label for="description" class="form-label">Content</label>
-                <textarea class="form-control custom-height-textarea" id="description" placeholder="Recent years, the emergence of Nikola Jokic has sparked debates among basketball enthusiasts worldwide. Known for his unique playing style and exceptional skills, Jokic has garnered attention and raised the question: Is he the best center ever?"></textarea>
-            </div>
-
-            <div class="mb-3">
-                <label for="category" class="form-label">Category</label>
-                <select class="form-select" id="category">
-                    <option selected disabled>Select category</option>
-                    <option value="food">Food</option>
-                    <option value="travel">Travel</option>
-                    <option value="technology">Technology</option>
-                    <!-- Dodajte preostale opcije kategorija -->
-                </select>
-            </div>
-
-            <div class="mb-5">
-                <label for="tags" class="form-label">Tags</label>
-                <select multiple class="form-control" id="tags">
-                    <option value="1">#food</option>
-                    <option value="2">#travel</option>
-                    <option value="3">#technology</option>
-                    <!-- Dodajte preostale opcije tagova -->
-                </select>
-            </div>
-
-
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="#rich life">
-                <button class="btn btn-outline-success" type="button">Create Tag</button>
-            </div>
-
-
-            <button type="submit" class="btn btn-primary mt-4">Create</button>
-          </form>
 
         </div>
 
     </div>
-
-  </div>
 </template>
 
 <script>

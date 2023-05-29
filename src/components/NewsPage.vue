@@ -1,152 +1,154 @@
 <template>
-  <div id="newsPage" style="height: 100vh;">
-  
-      <nav class="navbar navbar-expand-lg navbar-light border-navbar m-0">
-  
-          <div class="container-fluid justify-content-center">
-  
-  
-  
-              <a class="navbar-brand ps-5  text-navbar">
-  
-                  <img src="../assets/logo-raf.png" alt="Logo" width="60" height="60" class="d-inline-block">
-  
-                      RAF News
-  
-              </a>
-  
-  
-  
-              <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-  
-                  <span class="navbar-toggler-icon"></span>
-  
-              </button>
-  
-  
-  
-              <div class="collapse navbar-collapse justify-content-end  padding-left-right-125px" id="navbarNav">
-  
-                  <ul class="navbar-nav">
-  
-                      <li class="nav-item text-center m-3">
-  
-                          <a class="nav-link  text-navbar" href="#">Home</a>
-  
-                      </li>
-  
-                      <li class="nav-item text-center m-3">
-  
-                          <a class="nav-link text-navbar" href="#">Top Stories</a>
-  
-                      </li>
-  
-                      <li class="nav-item text-center m-3">
-  
-                          <a class="nav-link text-navbar" href="#">Categories</a>
-  
-                      </li>
-  
-                      <li class="nav-item text-center m-3">
-  
-                          <a class="nav-link text-navbar" href="#">Users</a>
-  
-                      </li>
-  
-                      <li class="nav-item text-center m-3">
-  
-                          <a class="nav-link text-navbar" href="#">Log out</a>
-  
-                      </li>
-  
-                  </ul>
-  
-              </div>
-  
-          </div>
-  
-      </nav>
-  
-  
-  
-      <div class="container mt-5">
-  
-          <div class="container-fluid glass custom-bar pt-2 ps-5 pe-5 pb-2 text-color">
-  
-  
-  
-              <nav class="nav justify-content-end">
-  
-                  <a class="nav-link" aria-current="page" href="#">Create News</a>
-  
-              </nav>
-  
-  
-  
-              <div class="row justify-content-center gap-5 mt-2">  <!-- Unutar ovog row-a se dodaju cardovi -->
-  
-                  <div class="card bg-transparent col-4 custom-border text-center">
-  
-                      <div class="card-body">
-  
-                          <h5 class="card-title">Naslov Vesti</h5>
-  
-                          <p class="card-text mt-3">Ime Autora</p>
+    <div id="newsPage" style="height: 100vh;">
 
-                          <p class="card-text mt-3 mb-4">Datum Kreiranja</p>
+        <nav class="navbar navbar-expand-lg navbar-light border-navbar m-0">
 
-                          <a href="#" class="card-link ">Update</a>
-  
-                          <a href="#" class="card-link">Delete</a>
-  
-                      </div>
-  
-                  </div>
+            <div class="container-fluid justify-content-center">
+
+
+
+                <a class="navbar-brand ps-5  text-navbar">
+
+                    <img src="../assets/logo-raf.png" alt="Logo" width="60" height="60" class="d-inline-block">
+
+                        RAF News
+
+                </a>
+
+
+
+                <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+
+
+                <div class="collapse navbar-collapse justify-content-end  padding-left-right-125px" id="navbarNav">
+
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item text-center m-3">
+
+                            <a class="nav-link  text-navbar" href="#">Home</a>
+
+                        </li>
+
+                        <li class="nav-item text-center m-3">
+
+                            <a class="nav-link text-navbar" href="#">Top Stories</a>
+
+                        </li>
+
+                        <li class="nav-item text-center m-3">
+
+                            <a class="nav-link text-navbar" href="#">Categories</a>
+
+                        </li>
+
+                        <li class="nav-item text-center m-3">
+
+                            <a class="nav-link text-navbar" href="#">News</a>
+
+                        </li>
+
+                        <li class="nav-item text-center m-3">
+
+                            <a class="nav-link text-navbar" href="#">Users</a>
+
+                        </li>
+
+                        <li class="nav-item text-center m-3">
+
+                            <a class="nav-link text-navbar" href="#">Log out</a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+        <div class="container mt-5">
+
+            <div class="container-fluid glass custom-bar pt-2 ps-5 pe-5 pb-2 text-color">
+
+
+
+                <nav class="nav justify-content-end">
+
+                    <a class="nav-link" aria-current="page" href="#">Create News</a>
+
+                </nav>
+
+
+                <div class="row justify-content-center gap-5 mt-2">  <!-- Unutar ovog row-a se dodaju cardovi -->
+
+                    <div class="card bg-transparent col-4 custom-border text-center">
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">Naslov Vesti</h5>
+
+                            <p class="card-text mt-3">Ime Autora</p>
+
+                            <p class="card-text mt-3 mb-4">Datum Kreiranja</p>
+
+                            <a href="#" class="card-link ">Update</a>
+
+                            <a href="#" class="card-link">Delete</a>
+
+                        </div>
+
+                    </div>
     
-              </div>
-  
-  
-  
-              <nav class="mt-5" aria-label="Page navigation example">
-  
-                  <ul class="pagination justify-content-center glass-pagination">
-  
-                      <li class="page-item">
-  
-                          <a class="page-link" href="#" aria-label="Previous">
-  
-                              <span aria-hidden="true">&laquo;</span>
-  
-                          </a>
-  
-                      </li>
-  
-                      <li class="page-item">
-  
-                          <a class="page-link" href="#" aria-label="Next">
-  
-                              <span aria-hidden="true">&raquo;</span>
-  
-                          </a>
-  
-                      </li>
-  
-                  </ul>
-  
-              </nav>
-  
-  
-  
-          </div>
-  
-      </div>
-  
-  </div>
+                </div>
+
+
+                <nav class="mt-5" aria-label="Page navigation example">
+
+                    <ul class="pagination justify-content-center glass-pagination">
+
+                        <li class="page-item">
+
+                            <a class="page-link" href="#" aria-label="Previous">
+
+                                <span aria-hidden="true">&laquo;</span>
+
+                            </a>
+
+                        </li>
+
+                        <li class="page-item">
+
+                            <a class="page-link" href="#" aria-label="Next">
+
+                                <span aria-hidden="true">&raquo;</span>
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+            </div>
+
+        </div>
+
+    </div>
 </template>
 
 <script>
 export default {
-  name: "NewsPage"
+    name: "NewsPage"
 }
 </script>
 

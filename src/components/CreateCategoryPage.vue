@@ -46,6 +46,12 @@
                             <a class="nav-link text-navbar" href="#">Categories</a>
     
                         </li>
+
+                        <li class="nav-item text-center m-3">
+
+                            <a class="nav-link text-navbar" href="#">News</a>
+
+                        </li>
     
                         <li class="nav-item text-center m-3">
     

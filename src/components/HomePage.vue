@@ -25,6 +25,9 @@
                             <a class="nav-link text-navbar" href="#">Categories</a>
                         </li>
                         <li class="nav-item text-center m-3">
+                            <a class="nav-link text-navbar" href="#">News</a>
+                        </li>
+                        <li class="nav-item text-center m-3">
                             <a class="nav-link text-navbar" href="#">Users</a>
                         </li>
                         <li class="nav-item text-center m-3">
@@ -39,16 +42,21 @@
             <div class="container-fluid glass custom-bar pt-3 ps-5 pe-5 pb-2">
 
                 <div class="row justify-content-center gap-5 mt-4">   <!-- Unutar ovog row-a se dodaju cardovi -->
-                    <div class="card col-2">
+                    <div class="card col-12  col-sm-12 col-md-4 col-lg-3">
                         <div class="card-body">
-                            <h5 class="card-title">Naslov</h5>
-                            <p class="card-text">Limitiran deo teksta</p>
+                            <h5 class="card-title text-center">Naslov</h5>
+                            <p class="card-text text-center">Limitiran deo teksta</p>
+                            <div class ="row justify-content-center">
+                                <p class="col">
+                                    Tip kategorije
+                                </p>
+                                <p class="col">
+                                    Datum objave
+                                </p>
+                            </div>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Kojoj kategoriji pripada</li>
-                            <li class="list-group-item">Datum objave</li>
-                        </ul>
                     </div>
+                    
                 </div>
 
                 

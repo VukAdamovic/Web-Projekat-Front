@@ -1,8 +1,6 @@
 <template>
     <div id="homePage" style="height: 100vh;">
     
-    
-    
         <nav class="navbar navbar-expand-lg navbar-light border-navbar m-0">
     
             <div class="container-fluid justify-content-center">
@@ -48,6 +46,12 @@
                             <a class="nav-link text-navbar" href="#">Categories</a>
     
                         </li>
+
+                        <li class="nav-item text-center m-3">
+
+                            <a class="nav-link text-navbar" href="#">News</a>
+
+                        </li>
     
                         <li class="nav-item text-center m-3">
     
@@ -68,7 +72,6 @@
             </div>
     
         </nav>
-    
     
     
         <div class="container mt-5">
@@ -244,8 +247,6 @@
             </div>
     
         </div>
-    
-    
     
     </div>
 </template>
