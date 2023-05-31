@@ -5,13 +5,13 @@
 
             <div class="container-fluid p-5 row justify-content-center" > 
     
-                    <form class="glass card-form p-5 col">
+                    <form class="glass card-form p-5 col ">
 
                         <div class="mb-3">
 
                             <label for="exampleInputEmail1" class="form-label">Email address</label>
 
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="someone@example.com">
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="someone@example.com" v-model="email">
 
                         </div>
 
@@ -19,11 +19,17 @@
 
                             <label for="exampleInputPassword1" class="form-label">Password</label>
 
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="********">
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="********" v-model="password">
 
                         </div>
 
-                        <button type="submit" class="btn btn-primary mt-4">Log In</button>
+                        <div class="text-center mb-4">
+                            <button type="submit" class="btn btn-primary mt-4" @click="login">Log In</button>
+                        </div>
+
+                        <div class="text-center">
+                            <p class="error-message text-danger fw-bold">{{ error }}</p> <!-- Prikazivanje poruke greške -->
+                        </div>
 
                     </form>
     
@@ -36,7 +42,44 @@
 
 <script>
 export default {
-    name: "LoginPage"
+    name: "LoginPage",
+    data() {
+        return {
+            email: '', 
+            password: '',
+            error: ''   
+        }
+    },
+    methods: {
+        login(event) {
+            event.preventDefault();
+            if (this.email === '' || this.password === '') {
+                this.error = 'Fields are required';
+            } else {
+
+                const requestBody = {
+                    email: this.email,
+                    password: this.password
+                };
+
+                // Slanje zahteva na zadatu rutu
+                this.$axios.post('http://localhost:8081/api/users/login', requestBody)
+                .then(response => {
+                    const jwt = response.data.jwt;
+
+                    if(jwt){
+                        localStorage.setItem('jwt', jwt);
+                        history.pushState(null, '', '/home');
+                        this.$router.push('/home');                    
+                    }
+
+                }) 
+                .catch(() => {
+                    this.error = 'Invalid credentials';
+                });
+            }
+        }
+    }
 }
 </script>
 
