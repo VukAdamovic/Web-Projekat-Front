@@ -1,13 +1,23 @@
 <template>
   <div id="app">
+    <MyNavbar v-if="showNavbar"/>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import MyNavbar from './components/MyNavbar.vue'
 
 export default {
   name: 'App',
+  components: {
+    MyNavbar
+  },
+  computed: {
+    showNavbar() {
+      return this.$route.path !== '/';
+    },
+  }
 }
 </script>
 

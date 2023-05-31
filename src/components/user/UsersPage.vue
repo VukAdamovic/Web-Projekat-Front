@@ -1,121 +1,43 @@
 <template>
-  <div id="categoriesPage" style="height: 100vh;">
-  
-      <nav class="navbar navbar-expand-lg navbar-light border-navbar m-0">
-  
-          <div class="container-fluid justify-content-center">
-  
-  
-  
-              <a class="navbar-brand ps-5  text-navbar">
-  
-                  <img src="../../assets/logo-raf.png" alt="Logo" width="60" height="60" class="d-inline-block">
-  
-                      RAF News
-  
-              </a>
-  
-  
-  
-              <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-  
-                  <span class="navbar-toggler-icon"></span>
-  
-              </button>
-  
-  
-  
-              <div class="collapse navbar-collapse justify-content-end  padding-left-right-125px" id="navbarNav">
-  
-                  <ul class="navbar-nav">
-  
-                      <li class="nav-item text-center m-3">
-  
-                          <a class="nav-link  text-navbar" href="#">Home</a>
-  
-                      </li>
-  
-                      <li class="nav-item text-center m-3">
-  
-                          <a class="nav-link text-navbar" href="#">Top Stories</a>
-  
-                      </li>
-  
-                      <li class="nav-item text-center m-3">
-  
-                          <a class="nav-link text-navbar" href="#">Categories</a>
-  
-                      </li>
+    <div id="categoriesPage" style="height: 100vh;">
 
-                      <li class="nav-item text-center m-3">
+        <div class="container mt-5">
 
-                          <a class="nav-link text-navbar" href="#">News</a>
+            <div class="container-fluid glass custom-bar pt-2 ps-5 pe-5 pb-2 text-color">
 
-                      </li>
-  
-                      <li class="nav-item text-center m-3">
-  
-                          <a class="nav-link text-navbar" href="#">Users</a>
-  
-                      </li>
-  
-                      <li class="nav-item text-center m-3">
-  
-                          <a class="nav-link text-navbar" href="#">Log out</a>
-  
-                      </li>
-  
-                  </ul>
-  
-              </div>
-  
-          </div>
-  
-      </nav>
-  
-  
-  
-      <div class="container mt-5">
-  
-          <div class="container-fluid glass custom-bar pt-2 ps-5 pe-5 pb-2 text-color">
-  
-  
-  
-              <nav class="nav justify-content-end">
-  
-                  <a class="nav-link" aria-current="page" href="#">Create User</a>
-  
-              </nav>
-  
-  
-  
-              <div class="row justify-content-center gap-5 mt-2">
-  
-                  <div class="card bg-transparent col-4 custom-border text-center">
-  
-                      <div class="card-body">
-  
-                          <h5 class="card-title">Ime i Prezime</h5>
-  
-                          <p class="card-text mt-3">email</p>
+                <nav class="nav justify-content-end">
 
-                          <p class="card-text mt-3">Tip</p>
+                    <a class="nav-link" aria-current="page" href="#">Create User</a>
 
-                          <button type="button" class="btn btn-outline-success  me-3">Status</button>
+                </nav>
 
-                          <button type="button" class="btn btn-outline-primary me-3">Update</button>
-  
-                          <button type="button" class="btn btn-outline-danger">Delete</button>
-  
-                      </div>
-  
-                  </div>
-                    
-              </div>
-  
-  
-  
-              <nav class="mt-5" aria-label="Page navigation example">
+
+                <div class="row justify-content-center gap-5 mt-2">
+    
+                    <div class="card bg-transparent col-4 custom-border text-center">
+    
+                        <div class="card-body">
+    
+                            <h5 class="card-title">Ime i Prezime</h5>
+    
+                            <p class="card-text mt-3">email</p>
+
+                            <p class="card-text mt-3">Tip</p>
+
+                            <button type="button" class="btn btn-outline-success  me-3">Status</button>
+
+                            <button type="button" class="btn btn-outline-primary me-3">Update</button>
+    
+                            <button type="button" class="btn btn-outline-danger">Delete</button>
+    
+                        </div>
+    
+                    </div>
+                        
+                </div>
+
+
+                <nav class="mt-5" aria-label="Page navigation example">
   
                   <ul class="pagination justify-content-center glass-pagination">
   
@@ -141,39 +63,22 @@
   
                   </ul>
   
-              </nav>
-  
-  
-  
-          </div>
-  
-      </div>
-  
-  </div>
+                </nav>
+
+            </div>
+
+        </div>
+
+    </div>
 </template>
 
 <script>
 export default {
-  name: "UsersPage"
+    name: "UsersPage"
 }
 </script>
 
 <style scoped>
-.custom-toggler .navbar-toggler-icon {
-    filter: invert(1);
-}
-
-.padding-left-right-125px {
-    padding-left: 125px;
-    padding-right: 125px;
-}
-
-.text-navbar {
-    color: #f7f7f7 !important;
-    font-size: 17px !important;
-    font-weight: 500 !important;
-}
-
 .text-color {
     color: #f7f7f7;
 }
@@ -193,10 +98,6 @@ export default {
     border-radius: 5px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
-
-.border-navbar {
-    border-bottom: 2px solid rgba(255, 255, 255, 0.18);
 }
 
 .custom-bar {

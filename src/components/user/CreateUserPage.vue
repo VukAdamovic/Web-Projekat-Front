@@ -1,136 +1,64 @@
 <template>
-  <div id="createUserPage" style="height: 100vh;">
-  
-      <nav class="navbar navbar-expand-lg navbar-light border-navbar m-0">
-  
-          <div class="container-fluid justify-content-center">
-  
-  
-  
-              <a class="navbar-brand ps-5  text-navbar">
-  
-                  <img src="../../assets/logo-raf.png" alt="Logo" width="60" height="60" class="d-inline-block">
-  
-                      RAF News
-  
-              </a>
-  
-  
-  
-              <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-  
-                  <span class="navbar-toggler-icon"></span>
-  
-              </button>
-  
-  
-  
-              <div class="collapse navbar-collapse justify-content-end  padding-left-right-125px" id="navbarNav">
-  
-                  <ul class="navbar-nav">
-  
-                      <li class="nav-item text-center m-3">
-  
-                          <a class="nav-link  text-navbar" href="#">Home</a>
-  
-                      </li>
-  
-                      <li class="nav-item text-center m-3">
-  
-                          <a class="nav-link text-navbar" href="#">Top Stories</a>
-  
-                      </li>
-  
-                      <li class="nav-item text-center m-3">
-  
-                          <a class="nav-link text-navbar" href="#">Categories</a>
-  
-                      </li>
+    <div id="createUserPage" style="height: 100vh;">
 
-                      <li class="nav-item text-center m-3">
+        <div class="container mt-2">
 
-                          <a class="nav-link text-navbar" href="#">News</a>
+            <div class="container-fluid p-5 row justify-content-center">
 
-                      </li>
-  
-                      <li class="nav-item text-center m-3">
-  
-                          <a class="nav-link text-navbar" href="#">Users</a>
-  
-                      </li>
-  
-                      <li class="nav-item text-center m-3">
-  
-                          <a class="nav-link text-navbar" href="#">Log out</a>
-  
-                      </li>
-  
-                  </ul>
-  
-              </div>
-  
-          </div>
-  
-      </nav>
-  
-      <div class="container mt-2">
-  
-          <div class="container-fluid p-5 row justify-content-center">
-  
-              <form class="p-5 col glass card-form text-center custom-bar">
-  
-                  <h4>New User</h4>
+                <form class="p-5 col glass card-form text-center custom-bar">
 
-                  <div class="input-group mt-4 mb-3">
+                    <h4>New User</h4>
+
+                    <div class="input-group mt-4 mb-3">
                     <input type="text" aria-label="First name" class="form-control" placeholder="First Name">
                     <input type="text" aria-label="Last name" class="form-control" placeholder="Last Name">
-                  </div>
-  
-                  <div class="mb-3">
-  
-                      <label for="exampleInputEmail1" class="form-label text-center">Email</label>
-  
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="someone@example.com">
-  
-                  </div>
-  
-                  <div class="mb-3">
-  
-                      <label for="exampleInputPassword1" class="form-label">Role Type</label>
-                      <select class="form-select" id="category">
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label for="exampleInputEmail1" class="form-label text-center">Email</label>
+
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="someone@example.com">
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label for="exampleInputPassword1" class="form-label">Role Type</label>
+                        <select class="form-select" id="category">
                         <option selected disabled>Select role type</option>
                         <option value="travel">Content Creator</option>
                         <option value="food">Admin</option>
                         <!-- Dodajte preostale opcije kategorija -->
                     </select>
-  
-                  </div>
 
-                  <div class="mb-3">
+                    </div>
+
+                    <div class="mb-3">
 
                     <label for="exampleInputPassword1" class="form-label">Password</label>
 
                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="********">
 
-                  </div>
+                    </div>
 
-                  <div class="mb-3">
+                    <div class="mb-3">
 
                     <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
 
                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="********">
 
-                  </div>
+                    </div>
 
-                  <button type="submit" class="btn btn-primary mt-4">Create</button>
-  
-              </form>
-  
-          </div>
-  
-      </div>
-  
-  </div>
+                    <button type="submit" class="btn btn-primary mt-4">Create</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
 </template>
 
 <script>
@@ -140,20 +68,7 @@ export default {
 </script>
 
 <style scoped>
-.custom-toggler .navbar-toggler-icon {
-    filter: invert(1);
-}
 
-.padding-left-right-125px {
-    padding-left: 125px;
-    padding-right: 125px;
-}
-
-.text-navbar {
-    color: #f7f7f7 !important;
-    font-size: 17px !important;
-    font-weight: 500 !important;
-}
 
 .text-color {
     color: #f7f7f7;
@@ -177,9 +92,6 @@ export default {
     max-width: 500px;
 }
 
-.border-navbar {
-    border-bottom: 2px solid rgba(255, 255, 255, 0.18);
-}
 
 .custom-bar {
     max-height: calc(100vh - 200px);
