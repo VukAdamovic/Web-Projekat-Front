@@ -25,7 +25,7 @@
     
                             <p class="card-text mt-3">{{ category.description }}</p>
     
-                            <a class="card-link" >Update</a>
+                            <a class="card-link" @click="updateCategoryPage(category.id)">Update</a>
     
                             <a class="card-link" @click="deleteCategory(category.id)">Delete</a>
     
@@ -100,6 +100,12 @@ export default {
         },
         createCategoryPage() {
             this.$router.push('/createCategory');
+        },
+        updateCategoryPage(id){
+            this.$router.push({ 
+                path: '/updateCategory',
+                query: { id: id }
+            });        
         },
         deleteCategory(id){
             const config = {
