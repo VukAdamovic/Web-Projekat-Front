@@ -1,5 +1,5 @@
 <template>
-    <div id="categoriesPage" style="height: 100vh;">    
+    <div id="categoriesPage">    
     
         <div class="container mt-5">
     
@@ -9,25 +9,25 @@
     
                 <nav class="nav justify-content-end">
     
-                    <a class="nav-link" aria-current="page" href="#">Create Category</a>
+                    <a class="nav-link" aria-current="page" @click="createCategoryPage">Create Category</a>
     
                 </nav>
     
     
     
-                <div class="row justify-content-center gap-5 mt-2">
+                <div class="row justify-content-center gap-5 mt-2" v-if = "categoryList.length > 0">
     
-                    <div class="card bg-transparent col-5 custom-border text-center">
+                    <div v-for="category in categoryList" :key="category.id"  class="card bg-transparent col-5 custom-border text-center">
     
                         <div class="card-body">
     
-                            <h5 class="card-title">Naslov Kategorije</h5>
+                            <h5 class="card-title">{{ category.name }}</h5>
     
-                            <p class="card-text mt-3">Kratak opis kategorije</p>
+                            <p class="card-text mt-3">{{ category.description }}</p>
     
-                            <a href="#" class="card-link ">Update</a>
+                            <a class="card-link" >Update</a>
     
-                            <a href="#" class="card-link">Delete</a>
+                            <a class="card-link" @click="deleteCategory(category.id)">Delete</a>
     
                         </div>
     
@@ -40,31 +40,19 @@
     
     
                 <nav class="mt-5" aria-label="Page navigation example">
-    
                     <ul class="pagination justify-content-center glass-pagination">
-    
-                        <li class="page-item">
-    
-                            <a class="page-link" href="#" aria-label="Previous">
-    
+                        <li class="page-item" :class="{ disabled: currentPage === 1 }">
+                            <a class="page-link"  aria-label="Previous" @click="decreasePage">
                                 <span aria-hidden="true">&laquo;</span>
-    
                             </a>
-    
                         </li>
-    
-                        <li class="page-item">
-    
-                            <a class="page-link" href="#" aria-label="Next">
-    
+
+                        <li class="page-item" :class="{ disabled: !categoryList || categoryList.length < 10 }">
+                            <a class="page-link" aria-label="Next" @click="increasePage">
                                 <span aria-hidden="true">&raquo;</span>
-    
                             </a>
-    
                         </li>
-    
                     </ul>
-    
                 </nav>
     
     
@@ -78,7 +66,67 @@
 
 <script>
 export default {
-    name: "CategoriesPage"
+    name: "CategoriesPage",
+    data(){
+        return {
+            categoryList: [],
+            currentPage: 1,
+        }
+    },
+    created(){
+        this.fetchCategories(this.currentPage);
+    },
+    methods: {
+        fetchCategories(page){
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('jwt')}`
+                },
+            };
+
+            this.$axios.get(`http://localhost:8081/api/categories/page/${page}`, config)
+            .then(response => {this.categoryList = response.data;})
+            .catch(error => {console.error(error);});
+        },
+        decreasePage() {
+            if (this.currentPage > 1) {
+                this.currentPage--;
+                this.fetchCategories(this.currentPage);
+            }
+        },
+        increasePage() {
+            this.currentPage++;
+            this.fetchCategories(this.currentPage);
+        },
+        createCategoryPage() {
+            this.$router.push('/createCategory');
+        },
+        deleteCategory(id){
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('jwt')}`
+                },
+            };
+
+            this.$axios.get(`http://localhost:8081/api/categories/news/${id}/1`, config)
+            .then(response => {
+                const newsByCategory = response.data;
+                console.log(newsByCategory);
+                if(newsByCategory.length === 0) {
+                    this.$axios.delete(`http://localhost:8081/api/categories/${id}`, config)
+                    .then(() =>{
+                        this.fetchCategories(this.currentPage);
+                    })
+                    .catch(error =>{
+                        console.log(error);
+                    })
+                }else {
+                    alert("Category has associated news and cannot be deleted.");
+                }
+            })  
+        }
+    }
+    
 }
 </script>
 
@@ -88,8 +136,8 @@ export default {
     border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
 }
 
-.card-max-width {
-    max-width: 500px;
+.text-color {
+    color: #f7f7f7;
 }
 
 .glass {

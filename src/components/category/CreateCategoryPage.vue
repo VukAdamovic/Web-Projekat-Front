@@ -1,9 +1,9 @@
 <template>
-    <div id="createCategoryPage" style="height: 100vh;">
+    <div id="createCategoryPage">
         
         <div class="container mt-2">
     
-            <div class="container-fluid p-5 row justify-content-center">
+            <div class="container-fluid p-5 row justify-content-center" style="height: 100vh;">
     
                 <form class="p-5 col glass card-form text-center">
     
@@ -13,7 +13,7 @@
     
                         <label for="exampleInputEmail1" class="form-label text-center">Category Name</label>
     
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Sport">
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Sport" v-model="categoryName">
     
                     </div>
     
@@ -21,11 +21,14 @@
     
                         <label for="exampleInputPassword1" class="form-label">Description</label>
     
-                        <textarea class="form-control custom-height-textarea" id="exampleInputPassword1" placeholder="Stay updated with the latest sports news. Be in the know about thrilling match moments and exclusive athlete interviews. Stay connected to the world of sports."></textarea>
+                        <textarea class="form-control custom-height-textarea" id="exampleInputPassword1" placeholder="Stay updated with the latest sports news. Be in the know about thrilling match moments and exclusive athlete interviews. Stay connected to the world of sports." v-model="description"></textarea>
     
                     </div>
     
-                    <button type="submit" class="btn btn-primary mt-4">Create</button>
+                    <button type="submit" class="btn btn-primary mt-4 mb-4" @click="createCategory">Create</button>
+
+                    <p class="error-message text-danger fw-bold">{{ myError }}</p> <!-- Prikazivanje poruke greške -->
+
     
                 </form>
     
@@ -39,7 +42,42 @@
 
 <script>
 export default {
-    name: "CreateCategoryPage"
+    name: "CreateCategoryPage",
+    data () {
+        return {
+            categoryName :'',
+            description :'',
+            myError:''
+        }
+    },
+    methods: {
+        createCategory(event){
+            event.preventDefault();
+
+            if(this.categoryName === '' || this.description === '') {
+                this.myError = 'Fields are required';
+            } else {
+                const config = {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+                    }
+                };
+
+                const requestBody = {
+                    name: this.categoryName,
+                    description: this.description
+                };
+
+                this.$axios.post('http://localhost:8081/api/categories', requestBody, config)
+                .then(response => {
+                    console.log(response.data);
+                    this.$router.push('/categories');
+                    
+                })
+                .catch(() => {this.myError = 'Category with that name already exists'});
+            }
+        }
+    }
 }
 </script>
 

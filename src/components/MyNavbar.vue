@@ -21,7 +21,7 @@
               <a class="nav-link text-navbar" href="#">Top Stories</a>
             </li>
             <li class="nav-item text-center m-3">
-              <a class="nav-link text-navbar" href="#">Categories</a>
+              <a class="nav-link text-navbar" href="#" @click="categoryPage">Categories</a>
             </li>
             <li class="nav-item text-center m-3">
               <a class="nav-link text-navbar" href="#">News</a>
@@ -47,6 +47,11 @@ export default {
     homePage(){
       if (this.$route.path !== '/home') {
         this.$router.push('/home');
+      }
+    },
+    categoryPage(){
+      if (this.$route.path !== '/categories') {
+        this.$router.push('/categories');
       }
     },
     logout() {
