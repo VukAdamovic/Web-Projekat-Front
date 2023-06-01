@@ -1,12 +1,12 @@
 <template>
-    <div id="homePage" style="height: 100vh;">
+    <div id="homePage" >
 
         <div class="container mt-5">
             <div class="container-fluid glass custom-bar pt-3 ps-5 pe-5 pb-2">
 
                 <div class="row justify-content-center  gap-5 mt-4" v-if="newsList.length > 0">
 
-                    <div v-for="news in newsList" :key="news.id" class="card col-12 col-sm-12 col-md-4 col-lg-3">
+                    <div v-for="news in newsList" :key="news.id"  @click="redirectToSinglePage(news.id)" class="card col-12 col-sm-12 col-md-4 col-lg-3">
                         <div class="card-body pt-3 ps-2 pe-2">
                             <p class="card-title text-center fw-bold fs-5">{{ news.title }}</p>
                             <p class="card-text text-center">{{ news.content.substring(0, 100) }}...</p>
@@ -77,7 +77,6 @@ export default {
                     .then(response => response.data.name)
                     .catch(error => {
                         console.error(error);
-                        return null;
                     });
                 });
 
@@ -98,7 +97,6 @@ export default {
                 console.error(error);
             });
         },
-
         decreasePage() {
             if (this.currentPage > 1) {
                 this.currentPage--;
@@ -108,6 +106,12 @@ export default {
         increasePage() {
             this.currentPage++;
             this.fetchNews(this.currentPage);
+        },
+        redirectToSinglePage(id) {
+            this.$router.push({ 
+                path: '/singleNewsPage',
+                query: { id: id }
+            });
         }
     }
 };

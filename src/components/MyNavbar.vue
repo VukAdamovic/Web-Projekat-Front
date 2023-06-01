@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse justify-content-end  padding-left-right-125px" id="navbarNav">
           <ul class="navbar-nav" >
             <li class="nav-item text-center m-3 ">
-              <a class="nav-link  text-navbar custom-active" @click="reset">Home</a>
+              <a class="nav-link  text-navbar" @click="homePage">Home</a>
             </li>
             <li class="nav-item text-center m-3">
               <a class="nav-link text-navbar" href="#">Top Stories</a>
@@ -44,13 +44,15 @@ export default {
   name: "MyNavbar",
 
   methods:{
+    homePage(){
+      if (this.$route.path !== '/home') {
+        this.$router.push('/home');
+      }
+    },
     logout() {
             localStorage.removeItem('jwt');
             history.pushState(null, '', '/');
             this.$router.push('/');          
-        },
-    reset() {
-        location.reload();
     }
   }
 }

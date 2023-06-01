@@ -1,5 +1,5 @@
 <template>
-    <div id="homePage" style="height: 100vh;">
+    <div id="homePage">
     
         <div class="container mt-5">
     
@@ -7,24 +7,12 @@
     
     
     
-                <h4 class="text-center">Naslov</h4>
+                <h4 class="text-center">{{title}}</h4>
     
     
     
                 <p class="mt-4">
-    
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pharetra vel turpis nunc eget lorem dolor sed viverra. Scelerisque eu ultrices vitae auctor eu augue. Et tortor consequat id porta
-    
-                    nibh. Nunc pulvinar sapien et ligula ullamcorper malesuada proin libero nunc. Fusce id velit ut tortor pretium. Sed viverra ipsum nunc aliquet. Et tortor at risus viverra adipiscing at in tellus. Massa ultricies mi quis hendrerit dolor
-    
-                    magna eget est lorem. Enim diam vulputate ut pharetra. Est ante in nibh mauris cursus mattis molestie a iaculis. Molestie ac feugiat sed lectus. Leo urna molestie at elementum. In nibh mauris cursus mattis molestie a. Viverra aliquet eget
-    
-                    sit amet tellus cras. Odio ut enim blandit volutpat maecenas volutpat. Faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis aliquam. Magna ac placerat vestibulum lectus mauris ultrices eros in. Eget nulla facilisi
-    
-                    etiam dignissim diam quis. Et tortor consequat id porta nibh venenatis cras sed felis. Ornare lectus sit amet est placerat in egestas erat imperdiet. Pharetra massa massa ultricies mi quis hendrerit dolor magna eget. Sit amet aliquam id
-    
-                    diam. Sagittis vitae et leo duis ut. Eros in cursus turpis massa tincidunt dui. A scelerisque purus semper eget duis at tellus.
-    
+                        {{ content }}
                 </p>
     
     
@@ -33,7 +21,7 @@
     
                     <div class="col">
     
-                        <p>Datum kreiranja</p>
+                        <p>{{ createdAt }}</p>
     
                     </div>
     
@@ -182,7 +170,43 @@
 export default {
     name: "SingleNewsPage",
     props: {
-        msg: String
+        id: String
+    },
+    data(){
+        return {
+            title:'',
+            content:'',
+            createdAt:'',
+            categoryId:'',
+            userId:''
+        }
+    },
+    created(){
+        this.fetchSingleNews();
+    },
+    methods:{
+        fetchSingleNews(){
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('jwt')}`
+                },
+            };
+
+            this.$axios.get(`http://localhost:8081/api/news/${this.id}`, config)
+            .then(response =>{
+
+                this.title = response.data.title;
+                this.content = response.data.content;
+                this.createdAt = response.data.createdAt;
+                this.categoryId = response.data.categoryId;
+                this.userId = response.data.userId;
+
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+        }
     }
 }
 </script>

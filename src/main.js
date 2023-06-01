@@ -5,7 +5,7 @@ import VueRouter from 'vue-router';
 
 import LoginPage from './components/LoginPage.vue'
 import HomePage from './components/HomePage.vue'
-// import SingleNewsPage from './components/news/SingleNewsPage.vue'
+import SingleNewsPage from './components/news/SingleNewsPage.vue'
 // import NewsPage from './components/news/NewsPage.vue'
 // import CreateNewsPage from './components/news/CreateNewsPage.vue'
 // import CategoriesPage from './components/category/CategoriesPage.vue'
@@ -21,7 +21,8 @@ Vue.use(VueRouter);
 
 const routes = [
   { path: '/', component: LoginPage },
-  { path: '/home', component: HomePage }
+  { path: '/home', component: HomePage },
+  {path: '/singleNewsPage', component: SingleNewsPage, props: route => ({ id: route.query.id })}
   // other routes...
 ];
 
