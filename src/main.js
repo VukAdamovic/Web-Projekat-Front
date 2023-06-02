@@ -15,8 +15,8 @@ import NewsPage from './components/news/NewsPage.vue'
 import CreateNewsPage from './components/news/CreateNewsPage.vue'
 import UpdateNewsPage from './components/news/UpdateNewsPage.vue'
 
-// import UsersPage from './components/user/UsersPage.vue'
-// import CreateUserPage from './components/user/CreateUserPage.vue'
+import UsersPage from './components/user/UsersPage.vue'
+import CreateUserPage from './components/user/CreateUserPage.vue'
 
 Vue.prototype.$axios = axios;
 
@@ -36,6 +36,9 @@ const routes = [
   { path: '/news', component: NewsPage },
   { path: '/createNews', component: CreateNewsPage },
   { path: '/updateNews', component: UpdateNewsPage, props: route => ({ id: route.query.id }) },
+
+  { path: '/users', component: UsersPage },
+  { path: '/createUser', component: CreateUserPage },
 
 
 

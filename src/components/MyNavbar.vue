@@ -21,13 +21,13 @@
               <a class="nav-link text-navbar" href="#">Top Stories</a>
             </li>
             <li class="nav-item text-center m-3">
-              <a class="nav-link text-navbar" href="#" @click="categoryPage">Categories</a>
+              <a class="nav-link text-navbar" @click="categoryPage">Categories</a>
             </li>
             <li class="nav-item text-center m-3">
-              <a class="nav-link text-navbar" href="#" @click="newsPage">News</a>
+              <a class="nav-link text-navbar" @click="newsPage">News</a>
             </li>
             <li class="nav-item text-center m-3">
-              <a class="nav-link text-navbar" href="#">Users</a>
+              <a class="nav-link text-navbar" @click="userPage">Users</a>
             </li>
             <li class="nav-item text-center m-3">
               <a class="nav-link text-navbar" @click="logout">Log out</a>
@@ -57,6 +57,11 @@ export default {
     newsPage(){
       if (this.$route.path !== '/news') {
         this.$router.push('/news');
+      }
+    },
+    userPage(){
+      if (this.$route.path !== '/users') {
+        this.$router.push('/users');
       }
     },
     logout() {
