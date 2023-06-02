@@ -1,68 +1,54 @@
 <template>
-    <div id="newsPage" style="height: 100vh;">
+    <div id="newsPage">
 
         <div class="container mt-5">
 
             <div class="container-fluid glass custom-bar pt-2 ps-5 pe-5 pb-2 text-color">
 
 
-
                 <nav class="nav justify-content-end">
 
-                    <a class="nav-link" aria-current="page" href="#">Create News</a>
+                    <a class="nav-link" aria-current="page" @click="createNewsPage">Create News</a>
 
                 </nav>
 
 
                 <div class="row justify-content-center gap-5 mt-2">  <!-- Unutar ovog row-a se dodaju cardovi -->
 
-                    <div class="card bg-transparent col-4 custom-border text-center">
+                    <div v-for="news in newsList" :key="news.id" class="card bg-transparent col-4 custom-border text-center">
 
                         <div class="card-body">
 
-                            <h5 class="card-title">Naslov Vesti</h5>
+                            <h5 class="card-title">{{ news.title }}</h5>
 
-                            <p class="card-text mt-3">Ime Autora</p>
+                            <p class="card-text mt-3">{{ authorsMap[news.id] }}</p>
 
-                            <p class="card-text mt-3 mb-4">Datum Kreiranja</p>
+                            <p class="card-text mt-3 mb-4">{{ news.createdAt }}</p>
 
-                            <a href="#" class="card-link ">Update</a>
+                            <a class="card-link" @click="updateNewsPage(news.id)">Update</a>
 
-                            <a href="#" class="card-link">Delete</a>
+                            <a class="card-link" @click="deleteNews(news.id)">Delete</a>
 
                         </div>
 
                     </div>
-    
+
                 </div>
 
-
                 <nav class="mt-5" aria-label="Page navigation example">
-
                     <ul class="pagination justify-content-center glass-pagination">
-
-                        <li class="page-item">
-
-                            <a class="page-link" href="#" aria-label="Previous">
-
+                        <li class="page-item" :class="{ disabled: currentPage === 1 }">
+                            <a class="page-link"  aria-label="Previous" @click="decreasePage">
                                 <span aria-hidden="true">&laquo;</span>
-
                             </a>
-
                         </li>
 
-                        <li class="page-item">
-
-                            <a class="page-link" href="#" aria-label="Next">
-
+                        <li class="page-item" :class="{ disabled: !newsList || newsList.length < 10 }">
+                            <a class="page-link" aria-label="Next" @click="increasePage">
                                 <span aria-hidden="true">&raquo;</span>
-
                             </a>
-
                         </li>
-
                     </ul>
-
                 </nav>
 
             </div>
@@ -74,7 +60,85 @@
 
 <script>
 export default {
-    name: "NewsPage"
+    name: "NewsPage",
+    data() {
+        return {
+            newsList: [],
+            currentPage: 1,
+            authorsMap:{}
+        }
+    },
+    created() {
+        this.fetchNews(this.currentPage);
+    },
+    methods: {
+        fetchNews(page) {
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('jwt')}`
+                },
+            };
+
+            this.$axios.get(`http://localhost:8081/api/news/page/${page}`, config)
+            .then(response => {
+                this.newsList = response.data;
+                
+                const userRequests = this.newsList.map(news => {
+                    return this.$axios.get(`http://localhost:8081/api/users/getUser/${news.userId}`, config)
+                    .then(response => response.data.firstName + ' ' + response.data.lastName)
+                    .catch(error => {
+                        console.error(error);
+                    });
+                });
+
+                Promise.all(userRequests)
+                .then(usersNames => {
+                    usersNames.forEach((userName, index) => {
+                        const news = this.newsList[index];
+                        if (userName) {
+                            this.$set(this.authorsMap, news.id, userName);
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+            })
+            .catch(error => {console.error(error);});
+        },
+        decreasePage() {
+            if (this.currentPage > 1) {
+                this.currentPage--;
+                this.fetchNews(this.currentPage);
+            }
+        },
+        increasePage(){
+            this.currentPage++;
+            this.fetchNews(this.currentPage);
+        },
+        createNewsPage(){
+            this.$router.push('/createNews');
+        },
+        updateNewsPage(id){
+            this.$router.push({ 
+                path: '/updateNews',
+                query: { id: id }
+            }); 
+        },
+        deleteNews(id){
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('jwt')}`
+                },
+            };
+
+            this.$axios.delete(`http://localhost:8081/api/news/${id}`, config)
+            .then(() => {
+                this.fetchNews(this.currentPage);
+            })
+            .catch(error =>{console.log(error);})
+        }
+    }
 }
 </script>
 

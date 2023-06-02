@@ -24,7 +24,7 @@
               <a class="nav-link text-navbar" href="#" @click="categoryPage">Categories</a>
             </li>
             <li class="nav-item text-center m-3">
-              <a class="nav-link text-navbar" href="#">News</a>
+              <a class="nav-link text-navbar" href="#" @click="newsPage">News</a>
             </li>
             <li class="nav-item text-center m-3">
               <a class="nav-link text-navbar" href="#">Users</a>
@@ -52,6 +52,11 @@ export default {
     categoryPage(){
       if (this.$route.path !== '/categories') {
         this.$router.push('/categories');
+      }
+    },
+    newsPage(){
+      if (this.$route.path !== '/news') {
+        this.$router.push('/news');
       }
     },
     logout() {

@@ -11,8 +11,9 @@ import CategoriesPage from './components/category/CategoriesPage.vue'
 import CreateCategoryPage from './components/category/CreateCategoryPage.vue'
 import UpdateCategoryPage from './components/category/UpdateCategoryPage.vue'
 
-// import NewsPage from './components/news/NewsPage.vue'
-// import CreateNewsPage from './components/news/CreateNewsPage.vue'
+import NewsPage from './components/news/NewsPage.vue'
+import CreateNewsPage from './components/news/CreateNewsPage.vue'
+import UpdateNewsPage from './components/news/UpdateNewsPage.vue'
 
 // import UsersPage from './components/user/UsersPage.vue'
 // import CreateUserPage from './components/user/CreateUserPage.vue'
@@ -31,6 +32,11 @@ const routes = [
   { path: '/categories', component: CategoriesPage },
   { path: '/createCategory', component: CreateCategoryPage },
   { path: '/updateCategory', component: UpdateCategoryPage, props: route => ({ id: route.query.id }) },
+
+  { path: '/news', component: NewsPage },
+  { path: '/createNews', component: CreateNewsPage },
+  { path: '/updateNews', component: UpdateNewsPage, props: route => ({ id: route.query.id }) },
+
 
 
 ];
