@@ -1,5 +1,5 @@
 <template>
-    <div id="createUserPage" style="height: 100vh;">
+    <div id="createUserPage">
 
         <div class="container mt-2">
 
@@ -10,27 +10,26 @@
                     <h4>New User</h4>
 
                     <div class="input-group mt-4 mb-3">
-                    <input type="text" aria-label="First name" class="form-control" placeholder="First Name">
-                    <input type="text" aria-label="Last name" class="form-control" placeholder="Last Name">
+                    <input type="text" aria-label="First name" class="form-control" placeholder="First Name" v-model="firstName">
+                    <input type="text" aria-label="Last name" class="form-control" placeholder="Last Name" v-model="lastName">
                     </div>
 
                     <div class="mb-3">
 
                         <label for="exampleInputEmail1" class="form-label text-center">Email</label>
 
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="someone@example.com">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="someone@example.com"  v-model="email">
 
                     </div>
 
                     <div class="mb-3">
 
                         <label for="exampleInputPassword1" class="form-label">Role Type</label>
-                        <select class="form-select" id="category">
-                        <option selected disabled>Select role type</option>
-                        <option value="travel">Content Creator</option>
-                        <option value="food">Admin</option>
-                        <!-- Dodajte preostale opcije kategorija -->
-                    </select>
+                        <select v-model="selectedRoleId" class="form-select" id="category">
+                            <option :value="null" selected disabled>Select role type</option>
+                            <option :value="1">Admin</option>
+                            <option :value="2">Content Creator</option>
+                        </select>
 
                     </div>
 
@@ -38,19 +37,21 @@
 
                     <label for="exampleInputPassword1" class="form-label">Password</label>
 
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="********">
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="********" v-model="password">
 
                     </div>
 
                     <div class="mb-3">
 
-                    <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+                    <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
 
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="********">
+                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="********" v-model="confirmationPassword">
 
                     </div>
 
-                    <button type="submit" class="btn btn-primary mt-4">Create</button>
+                    <button type="submit" class="btn btn-primary mt-4 mb-4" @click = "createUser">Create</button>
+
+                    <p class="error-message text-danger fw-bold">{{ myError }}</p> <!-- Prikazivanje poruke greške -->
 
                 </form>
 
@@ -63,7 +64,55 @@
 
 <script>
 export default {
-  name: "CreateUserPage"
+  name: "CreateUserPage",
+  data () {
+    return {
+        firstName:'',
+        lastName:'',
+        email:'',
+        selectedRoleId: null,
+        password:'',
+        confirmationPassword:'',
+        myError:''
+    }
+  },
+  methods: {
+    createUser(event){
+        event.preventDefault();
+        if(this.firstName ==='' || this.lastName === '' || this.email === '' || this.selectedRoleId === null || this.password === '' || this.confirmationPassword === ''){
+            this.myError = 'Fields are required';
+            return;
+        }
+
+        if(this.password != this.confirmationPassword){
+            this.myError = 'Password must be matches with confirmation password';
+            return;
+        }
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('jwt')}`
+            }
+        };
+
+        const requestBody = {
+            firstName: this.firstName,
+            lastName: this.lastName,
+            email: this.email,
+            roleId : this.selectedRoleId,
+            hashedPassword: this.password,
+            confirmPassword : this.confirmationPassword
+        };
+
+        this.$axios.post('http://localhost:8081/api/users', requestBody, config)
+        .then(() => {
+            this.$router.push('/users')
+        })
+        .catch(() => {
+            this.myError = 'User with that email already exists'
+        })
+    }
+  }
 }
 </script>
 

@@ -22,14 +22,14 @@
     
                             <p class="card-text mt-3">{{ user.email }}</p>
 
-                            <p class="card-text mt-3">{{ user.roleId }}</p>
+                            <p class="card-text mt-3">
+                                {{ user.roleId === 1 ? 'Admin' : 'Content Creator' }}
+                            </p>
 
-                            <button type="button" class="btn btn-outline-success  me-3">Status</button>
+                            <button type="button" :id="'statusBtn-' + user.id" class="btn me-3" :class="getStatusButtonClass(user.status)" @click="changeStatus(user.id)">Status</button>
 
-                            <button type="button" class="btn btn-outline-primary me-3">Update</button>
-    
-                            <button type="button" class="btn btn-outline-danger" @click="deleteUser(user.id)">Delete</button>
-    
+                            <button type="button" class="btn btn-outline-primary">Update</button>
+        
                         </div>
     
                     </div>
@@ -80,9 +80,14 @@ export default {
                 },
             };
 
-            this.$axios.get(`http://localhost:8081/api/users/page/${page}`, config)
-            .then(response => {this.usersList = response.data;})
+            this.$axios.get(`http://localhost:8081/api/users/page/${page}`,config)
+            .then(response => {
+                this.usersList = response.data;
+            })
             .catch(error => {console.error(error);});
+        },
+        getStatusButtonClass(status) {
+            return status ? 'btn-outline-success' : 'btn-outline-danger';
         },
         decreasePage() {
             if (this.currentPage > 1) {
@@ -97,20 +102,32 @@ export default {
         createUserPage(){
             this.$router.push('/createUser');
         },
-        deleteUser(id){
+        changeStatus(id){
             const config = {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('jwt')}`
                 },
             };
 
-            this.$axios.delete(`http://localhost:8081/api/users/${id}`, config)
+            this.$axios.put(`http://localhost:8081/api/users/status/${id}`, null , config)
+            .then(response => {
+                const statusUser = response.data.status;
+                const btnStatus = document.querySelector(`#statusBtn-${id}`);
+                btnStatus.classList.remove('btn-outline-danger');
+                btnStatus.classList.remove('btn-outline-success');
 
-            //nastavi dalje sa logikom
+                if (statusUser) {
+                    btnStatus.classList.add('btn-outline-success');
+                } else {
+                    btnStatus.classList.add('btn-outline-danger');
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
         }
-
     }
-
 }
 </script>
 
