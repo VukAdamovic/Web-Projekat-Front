@@ -28,7 +28,7 @@
 
                             <button type="button" :id="'statusBtn-' + user.id" class="btn me-3" :class="getStatusButtonClass(user.status)" @click="changeStatus(user.id)">Status</button>
 
-                            <button type="button" class="btn btn-outline-primary">Update</button>
+                            <button type="button" class="btn btn-outline-primary" @click="updateUser(user.id)">Update</button>
         
                         </div>
     
@@ -126,6 +126,12 @@ export default {
                 console.log(error);
             });
 
+        },
+        updateUser(id){
+            this.$router.push({ 
+                path: '/updateUser',
+                query: { id: id }
+            }); 
         }
     }
 }

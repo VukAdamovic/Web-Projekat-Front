@@ -26,7 +26,7 @@
             <li class="nav-item text-center m-3">
               <a class="nav-link text-navbar" @click="newsPage">News</a>
             </li>
-            <li class="nav-item text-center m-3">
+            <li class="nav-item text-center m-3" v-if = "userType === 1" >
               <a class="nav-link text-navbar" @click="userPage">Users</a>
             </li>
             <li class="nav-item text-center m-3">
@@ -40,9 +40,16 @@
 </template>
 
 <script>
+import jwtDecode from 'jwt-decode';
+
 export default {
   name: "MyNavbar",
-
+  computed:{
+    userType() {
+      const jwt = localStorage.getItem('jwt');
+      return jwtDecode(jwt).roleId;
+    }
+  },
   methods:{
     homePage(){
       if (this.$route.path !== '/home') {
@@ -68,7 +75,7 @@ export default {
             localStorage.removeItem('jwt');
             history.pushState(null, '', '/');
             this.$router.push('/');          
-    }
+    },
   }
 }
 </script>

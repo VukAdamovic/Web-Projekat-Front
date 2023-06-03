@@ -17,6 +17,8 @@ import UpdateNewsPage from './components/news/UpdateNewsPage.vue'
 
 import UsersPage from './components/user/UsersPage.vue'
 import CreateUserPage from './components/user/CreateUserPage.vue'
+import UpdateUserPage from './components/user/UpdateUserPage.vue'
+
 
 Vue.prototype.$axios = axios;
 
@@ -39,9 +41,7 @@ const routes = [
 
   { path: '/users', component: UsersPage },
   { path: '/createUser', component: CreateUserPage },
-
-
-
+  { path: '/updateUser', component: UpdateUserPage, props: route => ({ id: route.query.id })  },
 ];
 
 const router = new VueRouter({
