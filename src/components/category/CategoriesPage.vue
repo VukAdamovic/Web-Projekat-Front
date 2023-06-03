@@ -85,7 +85,14 @@ export default {
             };
 
             this.$axios.get(`http://localhost:8081/api/categories/page/${page}`, config)
-            .then(response => {this.categoryList = response.data;})
+            .then(response => {
+                if(response.data.length === 0 && this.currentPage > 1){
+                    this.currentPage--;
+                    this.fetchCategories(this.currentPage);
+                } else {
+                    this.categoryList = response.data;
+                }
+            })
             .catch(error => {console.error(error);});
         },
         decreasePage() {

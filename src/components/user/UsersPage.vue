@@ -82,7 +82,12 @@ export default {
 
             this.$axios.get(`http://localhost:8081/api/users/page/${page}`,config)
             .then(response => {
-                this.usersList = response.data;
+                if(response.data.length === 0 && this.currentPage > 1){
+                    this.currentPage--;
+                    this.fetchUsers(this.currentPage);
+                } else {
+                    this.usersList = response.data;
+                }
             })
             .catch(error => {console.error(error);});
         },

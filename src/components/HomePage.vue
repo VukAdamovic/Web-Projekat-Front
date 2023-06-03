@@ -70,7 +70,12 @@ export default {
 
             this.$axios.get(`http://localhost:8081/api/news/page/${page}`, config)
             .then((response) => {
-                this.newsList = response.data;
+                if(response.data.length === 0 && this.currentPage > 1){
+                    this.currentPage--;
+                    this.fetchNews(this.currentPage);
+                } else {
+                    this.newsList = response.data;
+                }
 
                 const categoryRequests = this.newsList.map(news => {
                     return this.$axios.get(`http://localhost:8081/api/categories/${news.categoryId}`, config)
