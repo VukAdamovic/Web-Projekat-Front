@@ -241,7 +241,9 @@ export default {
 
             this.$axios.post(`http://localhost:8081/api/comments`,requestBody, config)
             .then(() => {
-                this.myEror = '';
+                this.myError = '';
+                this.comment = '';
+                this.commentator = '';
                 this.fetchComments(this.currentPage);
             })
             .catch(error => {
