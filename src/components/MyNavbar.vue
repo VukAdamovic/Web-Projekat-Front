@@ -21,7 +21,7 @@
               <a class="nav-link  text-navbar" @click="allCategory">Category</a>
             </li>
             <li class="nav-item text-center m-3">
-              <a class="nav-link text-navbar" href="#">Top Stories</a>
+              <a class="nav-link text-navbar" @click="topStories" >Top Stories</a>
             </li>
             <li class="nav-item text-center m-3">
               <a class="nav-link text-navbar" @click="categoryPage">Categories</a>
@@ -33,7 +33,7 @@
               <a class="nav-link text-navbar" @click="userPage">Users</a>
             </li>
             <li class="nav-item text-center m-3">
-              <a class="nav-link text-navbar" @click="logout">Log out</a>
+              <a class="nav-link text-navbar" @click="logout">Log out ({{ userName }})</a>
             </li>
           </ul>
         </div>
@@ -51,6 +51,10 @@ export default {
     userType() {
       const jwt = localStorage.getItem('jwt');
       return jwtDecode(jwt).roleId;
+    },
+    userName()  {
+      const jwt = localStorage.getItem('jwt');
+      return jwtDecode(jwt).firstName + " " + jwtDecode(jwt).lastName;
     }
   },
   methods:{
@@ -62,6 +66,11 @@ export default {
     allCategory(){
       if (this.$route.path !== '/category') {
         this.$router.push('/category');
+      }
+    },
+    topStories(){
+      if (this.$route.path !== '/topStories') {
+        this.$router.push('/topStories');
       }
     },
     categoryPage(){
