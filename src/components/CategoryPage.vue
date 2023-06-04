@@ -4,18 +4,8 @@
       <div class="container mt-5">
   
           <div class="container-fluid glass custom-bar pt-2 ps-5 pe-5 pb-2 text-color">
-  
-  
-  
-              <nav class="nav justify-content-end">
-  
-                  <a class="nav-link" aria-current="page" @click="createCategoryPage">Create Category</a>
-  
-              </nav>
-  
-  
-  
-              <div class="row justify-content-center gap-5 mt-2" v-if = "categoryList.length > 0">
+    
+              <div class="row justify-content-center gap-5 mt-5" v-if = "categoryList.length > 0">
   
                   <div v-for="category in categoryList" :key="category.id"  class="card bg-transparent col-5 custom-border text-center">
   
@@ -96,9 +86,6 @@ export default {
         increasePage() {
             this.currentPage++;
             this.fetchCategories(this.currentPage);
-        },
-        createCategoryPage() {
-            this.$router.push('/createCategory');
         },
         filterNews(id){
             this.$router.push({ 

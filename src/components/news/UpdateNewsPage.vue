@@ -61,7 +61,6 @@
 </template>
 
 <script>
-import jwtDecode from 'jwt-decode';
 
 export default {
     name: "UpdateNewsPage",
@@ -222,10 +221,6 @@ export default {
                     }
                 };
 
-                const jwt = localStorage.getItem('jwt');
-                const decoded = jwtDecode(jwt);
-                const userId = decoded.id;
-
                 const requestBody = {
                     title: this.title,
                     content: this.content,
@@ -233,9 +228,8 @@ export default {
                 };
 
                 // Ažuriranje vesti
-                this.$axios.put(`http://localhost:8081/api/news/${userId}`, requestBody, config)
+                this.$axios.put(`http://localhost:8081/api/news/${this.id}`, requestBody, config)
                     .then(() => {
-                        // Ažuriranje uspešno
                         const deletePromises = this.previousSelectedTags.map(tag => {
                             // Brisanje prethodnih tagova
                             return this.$axios.delete(`http://localhost:8081/api/news_tags/${this.id}/${tag.id}`, config);
@@ -268,7 +262,6 @@ export default {
                             });
                     })
                     .catch(() => {
-                        // Greška pri ažuriranju
                         this.myError = 'greska';
                     });
             }
