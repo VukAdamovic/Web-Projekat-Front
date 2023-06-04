@@ -12,10 +12,13 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse justify-content-end  padding-left-right-125px" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-end padding-left-right-125px" id="navbarNav">
           <ul class="navbar-nav" >
             <li class="nav-item text-center m-3 ">
               <a class="nav-link  text-navbar" @click="homePage">Home</a>
+            </li>
+            <li class="nav-item text-center m-3 ">
+              <a class="nav-link  text-navbar" @click="allCategory">Category</a>
             </li>
             <li class="nav-item text-center m-3">
               <a class="nav-link text-navbar" href="#">Top Stories</a>
@@ -54,6 +57,11 @@ export default {
     homePage(){
       if (this.$route.path !== '/home') {
         this.$router.push('/home');
+      }
+    },
+    allCategory(){
+      if (this.$route.path !== '/category') {
+        this.$router.push('/category');
       }
     },
     categoryPage(){

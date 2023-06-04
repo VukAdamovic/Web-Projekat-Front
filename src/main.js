@@ -5,6 +5,8 @@ import VueRouter from 'vue-router';
 
 import LoginPage from './components/LoginPage.vue'
 import HomePage from './components/HomePage.vue'
+import CategoryPage from './components/CategoryPage.vue'
+
 import SingleNewsPage from './components/news/SingleNewsPage.vue'
 import NewsByCategoryPage from './components/news/NewsByCategoryPage.vue'
 import NewsByTagsPage from './components/news/NewsByTagsPage.vue'
@@ -31,6 +33,9 @@ Vue.use(VueRouter);
 const routes = [
   { path: '/', component: LoginPage },
   { path: '/home', component: HomePage },
+  { path: '/category', component: CategoryPage },
+
+  
   {path: '/singleNewsPage', component: SingleNewsPage, props: route => ({ id: route.query.id })},
   { path: '/newsByCategories', component: NewsByCategoryPage,  props: route => ({ id: route.query.id }) },
   { path: '/newsByTags', component: NewsByTagsPage, props: route => ({ id: route.query.id }) },
