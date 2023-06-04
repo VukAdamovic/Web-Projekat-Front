@@ -21,7 +21,7 @@
     
                         <div class="card-body">
     
-                            <h5 class="card-title">{{ category.name }}</h5>
+                            <h5 class="card-title" @click = "filterNews(category.id)">{{ category.name }}</h5>
     
                             <p class="card-text mt-3">{{ category.description }}</p>
     
@@ -137,6 +137,12 @@ export default {
                     alert("Category has associated news and cannot be deleted.");
                 }
             })  
+        },
+        filterNews(id){
+            this.$router.push({ 
+                path: '/newsByCategories',
+                query: { id: id }
+            }); 
         }
     }
     

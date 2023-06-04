@@ -19,7 +19,7 @@
 
                         <div class="card-body">
 
-                            <h5 class="card-title">{{ news.title }}</h5>
+                            <h5 class="card-title" @click="singleNewsPage(news.id)">{{ news.title }}</h5>
 
                             <p class="card-text mt-3">{{ authorsMap[news.id] }}</p>
 
@@ -142,6 +142,14 @@ export default {
                 this.fetchNews(this.currentPage);
             })
             .catch(error =>{console.log(error);})
+        },
+        singleNewsPage(id) {
+            // const url = `${window.location.protocol}//${window.location.host}/singleNewsPage?id=' + ${id}}`;
+            // window.open(url, '_blank');
+            this.$router.push({ 
+                path: '/singleNewsPage',
+                query: { id: id }
+            });
         }
     }
 }

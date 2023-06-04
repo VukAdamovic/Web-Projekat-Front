@@ -28,7 +28,7 @@
                     <div class="col text-start">
     
                         <div>
-                            <button v-for="tag in tagsList" :key="tag.id" class="btn btn-outline-primary m-1">{{ tag.keyWord }}</button>
+                            <button v-for="tag in tagsList" :key="tag.id" class="btn btn-outline-primary m-1" @click="filterNewsByTags(tag.id)">{{ tag.keyWord }}</button>
                         </div>
     
                     </div>
@@ -248,6 +248,12 @@ export default {
                 console.log(error);
             });
 
+        },
+        filterNewsByTags(id){
+            this.$router.push({ 
+                path: '/newsByTags',
+                query: { id: id }
+            });
         }
     }
 }
