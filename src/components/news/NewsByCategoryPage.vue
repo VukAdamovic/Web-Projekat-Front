@@ -12,9 +12,9 @@
                           <p class="card-text text-center">{{ news.content.substring(0, 100) }}...</p>
                       </div>
                       <div class="row justify-content-center align-items-center mb-0">
-                              <p class="col text-center">
+                              <!-- <p class="col text-center">
                                   {{ categoryMap[news.id]}}
-                              </p>
+                              </p> -->
                               <p class="col text-center">
                                   {{ news.createdAt }}
                               </p>
@@ -57,7 +57,7 @@ export default {
       return {
           newsList: [],
           currentPage: 1,
-          categoryMap: {}
+          // categoryMap: {}
       };
   },
   created() {
@@ -79,26 +79,26 @@ export default {
                   this.newsList = response.data;
               }
 
-              const categoryRequests = this.newsList.map(news => {
-                  return this.$axios.get(`http://localhost:8081/api/categories/${news.categoryId}`, config)
-                  .then(response => response.data.name)
-                  .catch(error => {
-                      console.error(error);
-                  });
-              });
+              // const categoryRequests = this.newsList.map(news => {
+              //     return this.$axios.get(`http://localhost:8081/api/categories/${news.categoryId}`, config)
+              //     .then(response => response.data.name)
+              //     .catch(error => {
+              //         console.error(error);
+              //     });
+              // });
 
-              Promise.all(categoryRequests)
-              .then(categoryNames => {
-                  categoryNames.forEach((categoryName, index) => {
-                      const news = this.newsList[index];
-                      if (categoryName) {
-                          this.$set(this.categoryMap, news.id, categoryName);
-                      }
-                  });
-              })
-              .catch(error => {
-              console.error(error);
-              });
+              // Promise.all(categoryRequests)
+              // .then(categoryNames => {
+              //     categoryNames.forEach((categoryName, index) => {
+              //         const news = this.newsList[index];
+              //         if (categoryName) {
+              //             this.$set(this.categoryMap, news.id, categoryName);
+              //         }
+              //     });
+              // })
+              // .catch(error => {
+              // console.error(error);
+              // });
           })
           .catch((error) => {
               console.error(error);

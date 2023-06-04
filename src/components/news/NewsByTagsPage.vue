@@ -71,8 +71,7 @@ export default {
               },
           };
 
-          //promeni samo ovde poziv
-          this.$axios.get(`http://localhost:8081/api/news/page/${page}`, config)
+          this.$axios.get(`http://localhost:8081/api/tags/${this.id}/${page}`, config)
           .then((response) => {
               if(response.data.length === 0 && this.currentPage > 1){
                   this.currentPage--;
