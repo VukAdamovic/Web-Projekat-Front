@@ -4,7 +4,7 @@
       <div class="container mt-5">
           <div class="container-fluid glass custom-bar pt-3 ps-5 pe-5 pb-2">
 
-              <div class="row justify-content-center  gap-5 mt-4" v-if="newsList.length > 0">
+              <div class="row justify-content-center  gap-5 m-5" v-if="newsList.length > 0">
 
                   <div v-for="news in newsList" :key="news.id"  @click="redirectToSinglePage(news.id)" class="card col-12 col-sm-12 col-md-4 col-lg-3">
                       <div class="card-body pt-3 ps-2 pe-2">
@@ -48,8 +48,7 @@ export default {
                 },
             };
 
-            //ovde treba samo da promenim poziv
-            this.$axios.get(`http://localhost:8081/api/news/page/`, config)
+            this.$axios.get(`http://localhost:8081/api/news/topStories`, config)
             .then((response) => {
 
                 this.newsList = response.data;

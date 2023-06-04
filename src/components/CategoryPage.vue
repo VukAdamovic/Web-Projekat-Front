@@ -7,11 +7,11 @@
     
               <div class="row justify-content-center gap-5 mt-5" v-if = "categoryList.length > 0">
   
-                  <div v-for="category in categoryList" :key="category.id"  class="card bg-transparent col-5 custom-border text-center">
+                  <div v-for="category in categoryList" :key="category.id"  @click = "filterNews(category.id)" class="card bg-transparent col-5 custom-border text-center">
   
                       <div class="card-body">
   
-                          <h5 class="card-title" @click = "filterNews(category.id)">{{ category.name }}</h5>
+                          <h5 class="card-title">{{ category.name }}</h5>
   
                           <p class="card-text mt-3">{{ category.description }}</p>
   
