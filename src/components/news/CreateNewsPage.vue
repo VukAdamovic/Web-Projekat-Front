@@ -146,6 +146,7 @@ export default {
                 .then(response => {
                     this.selectedTags.push(response.data);
                     this.tagName = '';
+                    this.myError = '';
                 })
                 .catch(error => {
                     console.error(error);
